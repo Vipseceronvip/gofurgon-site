@@ -185,13 +185,13 @@ footer {
 }
 
 .slide {
-  min-width: 100%;
+  min-width: 80%;
   position: relative;
 }
 
 .slide img {
   width: 100%;
-  height: 250px; /* или 250px, подберите визуально */
+  height: 200px; /* или 250px, подберите визуально */
   object-fit: cover;
   border-radius: 10px;
 }
