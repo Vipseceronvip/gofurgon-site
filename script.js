@@ -38,4 +38,3 @@ next.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % slides.length;
   showSlide(currentIndex);
 });
-
