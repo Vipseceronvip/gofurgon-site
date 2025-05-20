@@ -5,7 +5,7 @@ document.getElementById("rentalForm").addEventListener("submit", async function 
   const response = document.getElementById("response");
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbzE31l00qkrC6AJVGb8y2o54dBiNQR2zdQTF6bR18bFufHwNsY1UYkA-bVxs-hhdJ7UVg/exec", {
       method: "POST",
       body: data,
     });
