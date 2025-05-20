@@ -191,7 +191,7 @@ footer {
 
 .slide img {
   width: 100%;
-  height: 300px; /* или 250px, подберите визуально */
+  height: 250px; /* или 250px, подберите визуально */
   object-fit: cover;
   border-radius: 10px;
 }
