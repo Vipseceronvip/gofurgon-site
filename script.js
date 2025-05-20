@@ -16,3 +16,26 @@ document.getElementById("rentalForm").addEventListener("submit", async function 
     response.innerText = "Ошибка при отправке. Попробуйте позже.";
   }
 });
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${(i - index) * 100}%)`;
+  });
+}
+
+showSlide(currentIndex);
+
+prev.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  showSlide(currentIndex);
+});
+
+next.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+});
+
