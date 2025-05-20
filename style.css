@@ -66,8 +66,8 @@ section {
 
 #hero {
   text-align: center;
-  padding: 4rem 1rem;
-  background: url('https://images.unsplash.com/photo-1593941707874-ef25b8b44280?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+  padding: 2.5rem 1rem;
+  
   color: #32302f;
 }
 
