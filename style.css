@@ -175,7 +175,7 @@ footer {
 .carousel-container {
   position: relative;
   overflow: hidden;
-  max-width: 900px;
+  max-width: 600px;
   margin: auto;
 }
 
@@ -185,7 +185,7 @@ footer {
 }
 
 .slide {
-  min-width: 80%;
+  min-width: 100%;
   position: relative;
 }
 
