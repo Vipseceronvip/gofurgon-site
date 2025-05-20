@@ -1,87 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Аренда Mercedes-Benz Sprinter Classic</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аренда Mercedes-Benz Sprinter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Аренда Mercedes-Benz Sprinter Classic</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#cars">Наши автомобили</a></li>
-        <li><a href="#pricing">Тарифы</a></li>
-        <li><a href="#contact">Контакты</a></li>
-      </ul>
-    </nav>
-    
-  </header>
-
-  <main>
-    <section id="hero">
-      <h2>Комфортные микроавтобусы в аренду по Москве и МО</h2>
-      <p>Надёжный транспорт для ваших поездок, мероприятий и бизнеса</p>
-      <a href="#form" class="btn">Оставить заявку</a>
-    </section>
-
-    <section id="about">
-      <h2>О нас</h2>
-      <p>Мы предоставляем в аренду микроавтобусы Mercedes-Benz Sprinter Classic. Гибкие тарифы, прозрачные условия, оперативная поддержка.</p>
-    </section>
-
-    <section id="cars">
-      <h2>Наши автомобили</h2>
-      <div class="car-list">
-        <div class="car">
-          <img src="Sprinter_2.jpg" alt="Mercedes-Benz Sprinter Classic" />
-          <h3>Sprinter Classic 2020</h3>
-          <p>18 мест, кондиционер, USB, кожаный салон</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <h2>Тарифы и условия</h2>
-      <ul>
-        <li>Поездка по Москве: от 1500 ₽/час</li>
-        <li>Поездка по МО: от 1800 ₽/час</li>
-        <li>Минимальное время аренды: 3 часа</li>
-        <li>Водитель включён в стоимость</li>
-      </ul>
-    </section>
-
-    <section id="form">
-      <h2>Оставить заявку</h2>
-      <form id="rentalForm">
-        <input type="text" name="name" placeholder="Ваше имя" required />
-        <input type="tel" name="phone" placeholder="Телефон" required />
-        <input type="number" name="age" placeholder="Возраст" required />
-        <input type="datetime-local" name="datetime" required />
-        <select name="car">
-          <option value="Sprinter Classic 2020">Sprinter Classic 2020</option>
-        </select>
-        <textarea name="comment" placeholder="Комментарий"></textarea>
-        <button type="submit">Отправить</button>
-      </form>
-      <div id="response"></div>
-    </section>
-
-    <section id="contact">
-      <h2>Где нас найти</h2>
-      <p>Москва, ул. Примерная, д. 1</p>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.2844825989094!2d37.617299!3d55.755826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5aa672a3e9%3A0x9d56f6e0a8e6f47b!2z0JzQtdC90YLRgCDQn9GA0L7QtdC90LjQtSDQvdCw0LzQsNGA0YLQutCw0Y8!5e0!3m2!1sru!2sru!4v1716200000000"
-        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
-      </iframe>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Аренда Sprinter Classic. Все права защищены.</p>
-  </footer>
+  <div class="container">
+    <h1>Заявка на аренду</h1>
+    <form action="https://script.google.com/macros/s/ВАШ_ID/exec" method="POST" target="_blank">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="text" name="phone" placeholder="Телефон" required>
+      <input type="text" name="date" placeholder="Дата аренды (например, 25.05.2025)" required>
+      <input type="text" name="duration" placeholder="Срок аренды (часы или дни)" required>
+      <input type="text" name="region" placeholder="Регион: Москва или МО" required>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
 </body>
 </html>
