@@ -172,3 +172,58 @@ footer {
     font-size: 1.5rem;
   }
 }
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: auto;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.caption {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+@media (max-width: 600px) {
+  .caption h3 { font-size: 1rem; }
+  .caption p { font-size: 0.8rem; }
+}
+
