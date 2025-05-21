@@ -117,20 +117,7 @@
     <button type="submit">Оставить заявку</button>
   </form>
 </section>
-  <div class="container">
-    <h1>Заявка на аренду</h1>
-    <form action="https://script.google.com/macros/s/AKfycbzE31l00qkrC6AJVGb8y2o54dBiNQR2zdQTF6bR18bFufHwNsY1UYkA-bVxs-hhdJ7UVg/exec" method="POST" target="_blank">
-      <input type="text" name="name" placeholder="Ваше имя" required>
-      <input type="text" name="phone" placeholder="Телефон" required>
-      <input type="text" name="date" placeholder="Дата аренды (например, 25.05.2025)" required>
-      <input type="text" name="duration" placeholder="Срок аренды (часы или дни)" required>
-      <input type="text" name="region" placeholder="Регион: Москва или МО" required>
-      <button type="submit">Отправить</button>
-
-      
-    </form>
-  </div>
-<script>
+  <script>
 document.getElementById('rental-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
