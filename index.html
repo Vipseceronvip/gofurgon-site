@@ -2,144 +2,84 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Аренда Mercedes-Benz Sprinter</title>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-    .rental-form-section {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.rental-form-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-#rental-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#rental-form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-#rental-form button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-}
-
-#rental-form button:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 600px) {
-  .rental-form-section {
-    margin: 20px;
-    padding: 15px;
-  }
-
-  #rental-form input,
-  #rental-form button {
-    font-size: 15px;
-    padding: 10px;
-  }
-}
-
-    .container {
-      max-width: 600px;
+    body { font-family: Arial, sans-serif; background: #f6f6f6; padding: 20px; }
+    .form-container {
+      background: #fff;
+      max-width: 500px;
       margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-    h1 {
-      text-align: center;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    input, button {
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 16px;
+    label { display: block; margin-top: 15px; }
+    input, select {
+      width: 100%; padding: 10px; margin-top: 5px;
+      border: 1px solid #ccc; border-radius: 5px;
     }
     button {
-      background-color: #2e7d32;
-      color: white;
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #3b7ddd;
       border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #1b5e20;
-    }
-
-    @media screen and (max-width: 600px) {
-      .container {
-        width: 100%;
-        padding: 15px;
-      }
-    }
+    button:hover { background-color: #2f69c3; }
   </style>
 </head>
 <body>
-  <section class="rental-form-section">
-  <h2>Оставить заявку на аренду</h2>
-  <form id="rentForm">
-  <input type="text" name="name" placeholder="Ваше имя" required />
-  <input type="tel" name="phone" placeholder="Телефон" required />
-  <input type="text" name="date" placeholder="Дата аренды" required />
-  <input type="number" name="duration" placeholder="Длительность" required />
-  <input type="text" name="region" placeholder="Регион" required />
-  <button type="submit">Отправить</button>
-</form>
 
-</section>
+  <div class="form-container">
+    <h2>Оставьте заявку</h2>
+    <form id="rentalForm">
+      <label>Имя:
+        <input type="text" name="name" required>
+      </label>
+      <label>Телефон:
+        <input type="tel" name="phone" required pattern="^(\+7|8)\d{10}$" placeholder="+79991234567">
+      </label>
+      <label>Дата аренды:
+        <input type="text" name="date" placeholder="25.05.2025" required pattern="\d{2}\.\d{2}\.\d{4}">
+      </label>
+      <label>Продолжительность:
+        <input type="text" name="duration" placeholder="Например: 5 часов или 2 дня" required>
+      </label>
+      <label>Регион:
+        <select name="region" required>
+          <option value="">Выберите</option>
+          <option value="Москва">Москва</option>
+          <option value="МО">МО</option>
+        </select>
+      </label>
+      <button type="submit">Отправить заявку</button>
+    </form>
+    <div id="response" style="margin-top:15px;color:green;"></div>
+  </div>
+
   <script>
-  const form = document.getElementById('rentForm');
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzE31l00qkrC6AJVGb8y2o54dBiNQR2zdQTF6bR18bFufHwNsY1UYkA-bVxs-hhdJ7UVg/exec'; // Замени на свой URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzE31l00qkrC6AJVGb8y2o54dBiNQR2zdQTF6bR18bFufHwNsY1UYkA-bVxs-hhdJ7UVg/exec';
+    const form = document.getElementById('rentalForm');
+    const responseDiv = document.getElementById('response');
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(form);
-
-    fetch(scriptURL, { method: 'POST', body: formData })
-      .then(response => {
-        if (response.ok) {
-          alert('Заявка успешно отправлена!');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(() => {
+          responseDiv.textContent = 'Заявка успешно отправлена!';
           form.reset();
-        } else {
-          alert('Ошибка при отправке. Попробуйте позже.');
-        }
-      })
-      .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Ошибка при отправке. Попробуйте позже.');
-      });
-  });
-</script>
+        })
+        .catch(() => {
+          responseDiv.textContent = 'Ошибка при отправке. Попробуйте позже.';
+          responseDiv.style.color = 'red';
+        });
+    });
+  </script>
+
 </body>
 </html>
