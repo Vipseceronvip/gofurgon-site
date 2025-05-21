@@ -109,13 +109,14 @@
   <section class="rental-form-section">
   <h2>Оставить заявку на аренду</h2>
   <form id="rentForm">
-  <input name="name" placeholder="Имя" required />
-  <input name="phone" placeholder="Телефон" required />
-  <input name="date" placeholder="Дата аренды (ДД.ММ.ГГГГ)" required />
-  <input name="duration" placeholder="Длительность (в часах или днях)" required />
-  <input name="region" placeholder="Регион (Москва или МО)" required />
+  <input type="text" name="name" placeholder="Ваше имя" required />
+  <input type="tel" name="phone" placeholder="Телефон" required />
+  <input type="text" name="date" placeholder="Дата аренды" required />
+  <input type="number" name="duration" placeholder="Длительность" required />
+  <input type="text" name="region" placeholder="Регион" required />
   <button type="submit">Отправить</button>
 </form>
+
 </section>
   <script>
   const form = document.getElementById('rentForm');
