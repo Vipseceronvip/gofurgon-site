@@ -30,6 +30,8 @@
       cursor: pointer;
     }
     button:hover { background-color: #2f69c3; }
+    .error { color: red; }
+    .success { color: green; }
   </style>
 </head>
 <body>
@@ -44,7 +46,7 @@
         <input type="tel" name="phone" required pattern="^(\+7|8)\d{10}$" placeholder="+79991234567">
       </label>
       <label>Дата аренды:
-        <input type="text" name="date" placeholder="25.05.2025" required pattern="\d{2}\.\d{2}\.\d{4}">
+        <input type="text" name="date" placeholder="25.05.2025" required pattern="\\d{2}\\.\\d{2}\\.\\d{4}">
       </label>
       <label>Продолжительность:
         <input type="text" name="duration" placeholder="Например: 5 часов или 2 дня" required>
@@ -58,7 +60,7 @@
       </label>
       <button type="submit">Отправить заявку</button>
     </form>
-    <div id="response" style="margin-top:15px;color:green;"></div>
+    <div id="response" style="margin-top:15px;"></div>
   </div>
 
   <script>
@@ -68,18 +70,32 @@
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+      responseDiv.className = '';
+      responseDiv.textContent = '⏳ Отправка...';
+
       const formData = new FormData(form);
-      fetch(scriptURL, { method: 'POST', body: formData })
-        .then(() => {
-          responseDiv.textContent = 'Заявка успешно отправлена!';
-          form.reset();
+      const params = new URLSearchParams();
+
+      for (const [key, value] of formData.entries()) {
+        if (!value.trim()) {
+          responseDiv.textContent = 'Пожалуйста, заполните все поля.';
+          responseDiv.className = 'error';
+          return;
+        }
+        params.append(key, value.trim());
+      }
+
+      // Отправка через GET-запрос
+      fetch(`${scriptURL}?${params.toString()}`, { method: 'GET' })
+        .then(response => {
+          if (response.ok) {
+            responseDiv.textContent = '✅ Заявка успешно отправлена!';
+            responseDiv.className = 'success';
+            form.reset();
+          } else {
+            throw new Error();
+          }
         })
         .catch(() => {
-          responseDiv.textContent = 'Ошибка при отправке. Попробуйте позже.';
-          responseDiv.style.color = 'red';
-        });
-    });
-  </script>
-
-</body>
-</html>
+          responseDiv.textContent = '❌ Ошибка при отправке. Попробуйте позже.';
+          responseDiv.className = '
