@@ -11,6 +11,62 @@
       padding: 20px;
       background: #f9f9f9;
     }
+    .rental-form-section {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.rental-form-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#rental-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#rental-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+#rental-form button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+#rental-form button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .rental-form-section {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  #rental-form input,
+  #rental-form button {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
     .container {
       max-width: 600px;
       margin: auto;
